@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Cadastro de usuário</h2>
+
+<form method="post" action="{% url 'create_user' %}">
+    {% csrf_token %}
+    <label>Username</label>
+    {{ form.username }}
+    <label>Nome</label>
+    {{ form.first_name }}
+    <label>Sobrenome</label>
+    {{ form.last_name }}
+    <label>Email</label>
+    {{ form.email }}
+    <label>Senha</label>
+    {{ form.password }}
+
+    <button type="submit">
+        Salvar
+    </button>
+
+</form>
+
+{% endblock %}
