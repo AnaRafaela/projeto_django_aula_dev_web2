@@ -1,7 +1,7 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-        {% load staticfiles %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,13 +14,13 @@
                 <div class="item">
                   <img src="{% static 'image/download.jpeg' %}">
                 </div>
-                <a class="item"><font style="vertical-align: inherit;">
+                <a class="item" href="{% url 'main' %}"><font style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">
-                        Recursos 
+                        Principal 
                     </font></font></a>
-                <a class="item"><font style="vertical-align: inherit;">
+                <a class="item" href="{% url 'post-list' %}"><font style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">
-                        Testemunhos 
+                        Posts 
                     </font></font></a>
                 <div class="right menu">
                     {% if user.is_authenticated %}
@@ -41,7 +41,7 @@
                 </div>
               </div>
               
-    <article class="ui stackable grid" style="background-color:lightpink; margin-top: 40px">
+    <article class="ui stackable grid" style="margin-top: 40px">
         {% block content %}
 
         {% endblock %}

@@ -4,4 +4,9 @@
 <h1>Todo</h1>
 <a href="{% url 'post-add' %}">Escrever Post</a>
 
+{% for item in posts %}
+{{ item.title }}
+
+{% endfor %}
+
 {% endblock %}
