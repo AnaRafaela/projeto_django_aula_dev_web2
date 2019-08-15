@@ -1,10 +1,77 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
 
-<h1>Bem vindo</h1>
+<h3 class="ui center aligned header">Responsive Item</h3>
+<div class="ui centered segment">
+        <img class="ui fluid image" src="#">
+</div>
 
-<a href="{% url 'create_user' %}">Registro de usuario</a>
-<a href="{% url 'login' %}">Login</a>
-<a href="{% url 'logout' %}">Logout</a>
+<div class="ui container">
+  <div class="ui relaxed divided items">
+    <div class="item">
+      <div class="ui small image">
+        <img src="assets/images/wireframe/image.png">
+      </div>
+      <div class="content">
+        <a class="header">Content Header</a>
+        <div class="meta">
+          <a>Date</a>
+          <a>Category</a>
+        </div>
+        <div class="description">
+          A description which may flow for several lines and give context to the content.
+        </div>
+        <div class="extra">
+          <img src="assets/images/wireframe/square-image.png" class="ui circular avatar image"> Username
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui small image">
+        <img src="assets/images/wireframe/image.png">
+      </div>
+      <div class="content">
+        <a class="header">Content Header</a>
+        <div class="meta">
+          <a>Date</a>
+          <a>Category</a>
+        </div>
+        <div class="description">
+          A description which may flow for several lines and give context to the content.
+        </div>
+        <div class="extra">
+          <div class="ui right floated primary button">
+            Primary
+            <i class="right chevron icon"></i>
+          </div>
+          <div class="ui label">Limited</div>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="ui small image">
+        <img src="assets/images/wireframe/image.png">
+      </div>
+      <div class="content">
+        <a class="header">Content Header</a>
+        <div class="meta">
+          <a>Date</a>
+          <a>Category</a>
+        </div>
+        <div class="description">
+          A description which may flow for several lines and give context to the content.
+        </div>
+        <div class="extra">
+          <div class="ui right floated primary button">
+            Primary
+            <i class="right chevron icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}
