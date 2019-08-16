@@ -18,10 +18,13 @@
                     <font style="vertical-align: inherit;">
                         Principal 
                     </font></font></a>
+                    {% if user.is_authenticated %}
                 <a class="item" href="{% url 'post-list' %}"><font style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">
-                        Posts 
+                        Perfil de
+                        {{ user.username }} 
                     </font></font></a>
+                    {% endif %}
                 <div class="right menu">
                     {% if user.is_authenticated %}
                     <a class="item" href="{% url 'logout' %}"><font style="vertical-align: inherit;">
