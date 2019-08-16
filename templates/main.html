@@ -1,12 +1,92 @@
 {% extends "base.html" %}
-{% load staticfiles %}
+{% load static %}
+{% block title %}{{ block.super }}/Principal {% endblock %}
 {% block content %}
 
-<h3 class="ui center aligned header">Responsive Item</h3>
+{% if user.is_authenticated %}
+<div class="two wide column"></div>
+<div class="twelve wide column">
+<div class="two wide column"></div>
+<div class="field">
+<div class="ui pink fluid segment">
+    <h2 class="ui center aligned header">Olá 
+        {{ user.username }}
+    </h2>
+    <div class="ui form">
+            <div class="field">
+                    <form class="ui category search">
+                        <div class="ui icon input">
+                            <input class="prompt" name="busca" id="busca" type="text" placeholder="Digite sua busca...">
+                            <button type="submit" class="circular ui icon button">
+                                <i class="search icon"></i></button>
+                        </div>
+                        <div class="results"></div>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    
+    <div class="field">
+<div class="ui fluid segment" style="background-color: pink">
+<h2 class="ui center aligned header">Resultados</h2>
+<h4 class="ui center aligned top attached header">
+    <div class="ui center aligned pagination">
+        <span class="step-links">
+            {% if lista_posts.has_previous %}
+                <a href="?page=1"><i class="angle double left icon"></i>primeira</a>
+                <a href="?page={{ lista_posts.previous_page_number }}">
+                    <i class="angle left icon"></i>
+                    anterior
+                </a>
+            {% endif %}
+            <span class="current">
+                Página {{ lista_posts.number }} de {{ lista_posts.paginator.num_pages }}
+            </span>
+            {% if lista_posts.has_next %}
+                <a href="?page={{ lista_posts.next_page_number }}">
+                    próximo
+                    <i class="angle right icon"></i>
+                </a>
+                <a href="?page={{ lista_posts.paginator.num_pages }}">
+                    última
+                    <i class="angle double right icon"></i>
+                </a>
+            {% endif %}
+        </span>
+    </div>
+</h4>
+    <div class="ui centered list">
+        {% for post in lista_posts %}
+        <div class="item">
+        <div class="content">
+                {% if post.imagem %}
+        <a href="{% url 'imagem' post.id %}">
+            <img class="ui centered medium image" src="{{ post.imagem.url }}">
+        </a>
+            {% else %}
+            <img class="ui centered medium image" src="{% static 'image/show-and-tell-Logo.jpg' %}">
+            {% endif %}
+            <p>
+            <a href="{'#'}">
+                <h4 class="ui center aligned header">{{ post.title }}</h4>
+            </a>
+            <p>
+                <h5 class="ui center aligned header">
+                {{ post.resumo }}
+            </h5>
+            </p>
+        </p>
+        </div>
+        </div>
+         {% endfor %}
+    </div>
 
-<div class="ui centered segment">
-
+        </div>
+    </div>
 </div>
-
-
+</div>
+{% else %}
+<img class="ui centered huge image" src="{% static 'image/show-and-tell-Logo.jpg' %}">
+{% endif %}
 {% endblock %}

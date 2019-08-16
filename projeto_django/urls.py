@@ -28,6 +28,6 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('post/', include('app.urls')),
+    path('perfil/', include('app.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

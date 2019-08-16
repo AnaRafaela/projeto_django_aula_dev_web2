@@ -3,13 +3,20 @@ from django.views import View
 from .models import UsuarioModel
 from .forms import UsuarioForm
 
+from django.core.paginator import Paginator
+from app.models import Post
+
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 
 class Main(View):
     template = 'main.html'
     def get(self, request):
-        return render(request, self.template)
+        posts = Post.objects.all()
+        paginator = Paginator(posts, 10)
+        page = request.GET.get('page')
+        lista_posts = paginator.get_page(page)
+        return render(request, self.template, {'lista_posts':lista_posts})
 
 class UsuarioView(View):
     template = 'create_user.html'
