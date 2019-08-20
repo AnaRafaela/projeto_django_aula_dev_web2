@@ -1,9 +1,34 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}{{ block.super }}/Perfil {% endblock %}
 {% block content %}
 
+<div class="ui fluid card">
+    <div class="ui fluid image">
+        <svg width="900" height="200">
+            <image xlink:href="{% static 'image/download.jpeg' %}" x="0" y="0" width="100%" height="100%"></image>
+        </svg>
+    </div>
+    <div class="content">
+        <h3 class="header"><font style="vertical-align: inherit;">
+            <font style="vertical-align: inherit;">Kristy</font></font></h3>
+        <div class="meta">
+        <span class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Registrado em 2013</font></font></span>
+      </div>
+      <div class="description"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        Kristy é uma diretora de arte que mora em Nova York.
+      </font></font></div>
+    </div>
+    <div class="extra content">
+      <a>
+        <i class="user icon"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+        22 amigos
+      </font></font></a>
+    </div>
+  </div>
+
 <h1>Todo</h1>
-<a href="{% url 'post-add' %}">Escrever Post</a>
+<a href="{% url 'post_new' %}">Escrever Post</a>
 
 {% for item in posts %}
 {{ item.title }}

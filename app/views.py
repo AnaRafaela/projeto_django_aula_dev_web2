@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 
 # Create your views here.
@@ -6,6 +6,7 @@ from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from app.models import Post
+from app.forms import PostForm
 
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
@@ -24,13 +25,17 @@ class Perfil(View):
         posts = Post.objects.all()
         return render(request, self.template, {'posts':posts})
 
-
-@method_decorator(login_required, name='dispatch')
-class PostCreate(CreateView):
-    model = Post
-    fields = ['title', 'resumo', 'imagem']
-    success_url = reverse_lazy('main')
-
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.auth = request.user
+            post.save()
+            return redirect('main')
+    else:
+        form = PostForm()
+    return render(request, 'app/post_form.html', {'form': form})
 
 @method_decorator(login_required, name='dispatch')
 class PostUpdate(UpdateView):
