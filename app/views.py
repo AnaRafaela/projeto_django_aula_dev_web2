@@ -6,6 +6,7 @@ from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from app.models import Post
+from main.models import User
 from app.forms import PostForm
 
 from django.utils.decorators import method_decorator
@@ -15,15 +16,8 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def imagemView(request, id):
     imagem = get_object_or_404(Post, pk=id)
-    return render(request, 'app/image.html', {'imagem': imagem} )
+    return render(request, 'app/image.html', {'imagem': imagem})
 
-
-@method_decorator(login_required, name='dispatch')
-class Perfil(View):
-    template = 'perfil.html'
-    def get(self, request):
-        posts = Post.objects.all()
-        return render(request, self.template, {'posts':posts})
 
 def post_new(request):
     if request.method == "POST":

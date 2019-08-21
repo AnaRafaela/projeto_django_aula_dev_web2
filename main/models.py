@@ -10,6 +10,4 @@ class UsuarioModel(User):
         return self.first_name
 
 
-
-
 # Create your models here.

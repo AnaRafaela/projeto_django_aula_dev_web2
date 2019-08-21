@@ -73,12 +73,102 @@
             </a>
             <p>
                 <h5 class="ui center aligned header">
-                {{ post.resumo }}
+                {{ post.description }}
             </h5>
             </p>
         </p>
         </div>
         </div>
+
+        <div class="ui comments">
+                <h3 class="ui dividing header"><font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">
+                        Comentários</font>
+                    </font></h3>
+                <div class="comment">
+                  <a class="avatar">
+                    <img src="/images/avatar/small/matt.jpg">
+                  </a>
+                  <div class="content">
+                    <a class="author"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Matt</font></font></a>
+                    <div class="metadata">
+                      <span class="date"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Hoje às 17h42</font></font></span>
+                    </div>
+                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                      Como artístico!
+                    </font></font></div>
+                    <div class="actions">
+                      <a class="reply"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Resposta</font></font></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment">
+                  <a class="avatar">
+                    <img src="/images/avatar/small/elliot.jpg">
+                  </a>
+                  <div class="content">
+                    <a class="author"><font style="vertical-align: inherit;">
+                        <font style="vertical-align: inherit;">Elliot Fu</font></font></a>
+                    <div class="metadata">
+                      <span class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ontem às 12:30</font></font></span>
+                    </div>
+                    <div class="text">
+                      <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Isso tem sido muito útil para minha pesquisa. </font><font style="vertical-align: inherit;">Obrigado também!</font></font></p>
+                    </div>
+                    <div class="actions">
+                      <a class="reply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resposta</font></font></a>
+                    </div>
+                  </div>
+                  <div class="comments">
+                    <div class="comment">
+                      <a class="avatar">
+                        <img src="/images/avatar/small/jenny.jpg">
+                      </a>
+                      <div class="content">
+                        <a class="author"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jenny Hess</font></font></a>
+                        <div class="metadata">
+                          <span class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora mesmo</font></font></span>
+                        </div>
+                        <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                          Elliot você está sempre tão certo :)
+                        </font></font></div>
+                        <div class="actions">
+                          <a class="reply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resposta</font></font></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment">
+                  <a class="avatar">
+                    <img src="/images/avatar/small/joe.jpg">
+                  </a>
+                  <div class="content">
+                    <a class="author"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Joe Henderson</font></font></a>
+                    <div class="metadata">
+                      <span class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5 dias atrás</font></font></span>
+                    </div>
+                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                      Cara, isso é incrível. </font><font style="vertical-align: inherit;">Muito obrigado
+                    </font></font></div>
+                    <div class="actions">
+                      <a class="reply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resposta</font></font></a>
+                    </div>
+                  </div>
+                </div>
+                <form class="ui reply form">
+                  <div class="field">
+                    <textarea></textarea>
+                  </div>
+                  <div class="ui blue labeled submit icon button">
+                    <i class="icon edit"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Adicionar resposta
+                  </font></font></div>
+                </form>
+              </div>
+
          {% endfor %}
     </div>
 
@@ -87,6 +177,6 @@
 </div>
 </div>
 {% else %}
-<img class="ui centered huge image" src="{% static 'image/show-and-tell-Logo.jpg' %}">
+<img class="ui centered medium image" src="{% static 'image/color_hand.png' %}">
 {% endif %}
 {% endblock %}

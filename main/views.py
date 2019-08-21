@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from .models import UsuarioModel
 from .forms import UsuarioForm
@@ -18,22 +18,31 @@ class Main(View):
         lista_posts = paginator.get_page(page)
         return render(request, self.template, {'lista_posts':lista_posts})
 
-class UsuarioView(View):
-    template = 'create_user.html'
-    
-    def get(self,request):
-        form = UsuarioForm()
-        return render(request, self.template, {'form': form})
-        
-    def post(self, request):
-        form = UsuarioForm(request.POST)
-        if form.is_valid():
-            form.save()
-            usuario = UsuarioModel.objects.latest('id')
-            usuario.groups.add(Group.objects.get(pk=1))
-            usuario.save()
-            return redirect('main')
-            return render(request, self.template, {'form': form})
+
+def perfilUser(request, id):
+    perfil = UsuarioModel.objects.all()
+    posts = Post.objects.all()
+    return render(request, 'perfil.html', {'perfil':perfil, 'posts':posts})
+
+
+def update_perfil(request, id):
+    user = get_object_or_404(UsuarioModel, pk=id)
+    form = UsuarioForm(request.POST or None, request.FILES or None, instance=user)
+
+    if form.is_valid():
+        form.save()
+        return redirect('main')
+    return render(request, 'create_user.html', {'form':form})
+
+
+def new_user(request):
+    form = UsuarioForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('main')
+    return render(request, 'create_user.html', {'form':form})
+
+
 
 class LoginView(View):
     template = 'login.html'

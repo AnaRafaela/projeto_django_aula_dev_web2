@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from main import views
+from main.views import perfilUser
+from main.views import new_user
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -24,9 +26,11 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.Main.as_view(), name='main'),
-    path('create_user/', views.UsuarioView.as_view(), name='create_user'),
+    path('user-page/<int:id>', views.perfilUser, name='user-page'),
+    path('create_user/', views.new_user, name='new_user'),
+    path('update_perfil/<int:id>', views.update_perfil, name='update_perfil'),
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
-    path('perfil/', include('app.urls')),
+    path('post/', include('app.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

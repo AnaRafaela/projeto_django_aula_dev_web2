@@ -7,7 +7,7 @@
         <div class="ui pink fluid segment" style="background-color:lightpink">
             <h2 class="ui center aligned header">Faça seu cadastro para realizar log-in</h2>
 
-        <form class="ui form segment" style="background-color: pink" method="post" action="{% url 'create_user' %}">
+        <form class="ui form segment" style="background-color: pink" method="post" action="{% url 'new_user' %}">
             {% csrf_token %}
             <h4 class="ui dividing header">Informações pessoais</h4>
             <div class="field">
