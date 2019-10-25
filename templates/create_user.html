@@ -7,12 +7,12 @@
         <div class="ui pink fluid segment" style="background-color:lightpink">
             <h2 class="ui center aligned header">Faça seu cadastro para realizar log-in</h2>
 
-        <form class="ui form segment" style="background-color: pink" method="post" action="{% url 'new_user' %}">
+        <form class="ui form segment" style="background-color: pink" method="post" action="{% url 'cadastro_usuario' %}">
             {% csrf_token %}
             <h4 class="ui dividing header">Informações pessoais</h4>
             <div class="field">
                 <div class="two fields">
-                    <div class="three wide field">
+                    <div class="six wide field">
                         <label>Nome</label>
                         {{ form.first_name }}
                         {% if form.first_name.errors %}
@@ -34,8 +34,8 @@
             </div>
             <h4 class="ui dividing header">Credenciais para login</h4>
             <div class="fields">
-                <div class="four wide field">
-                    <label>Nome de usuário</label>
+                <div class="seven wide field">
+                    <label>Username</label>
                     {{ form.username }}
                     {% if form.username.errors %}
                         <div class="ui red pointing label">
@@ -62,7 +62,7 @@
             </div>
         </form>
         </div>
-        <a href="{% url 'main' %}" class="ui left floated button">
+        <a href="{% url 'principal' %}" class="ui left floated button">
             Voltar
             </a>
 

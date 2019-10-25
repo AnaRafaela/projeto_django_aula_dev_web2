@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ block.super }}/ADM {% endblock %}
+{% block content %}
+<div class="two wide column"></div>
+<div class="twelve wide column">
+    <div class="two wide column"></div>
+    <div class="ui pink fluid segment">
+
+        <h2 class="ui center aligned header">Área do administrador</h2>
+
+        <a href="{% url 'categoria_new' %}" class="ui blue right floated button">
+            Nova categoria
+            <i class="angle double right icon"></i>
+        </a>
+       <div class="two wide column">
+       <table class="ui large striped table">
+                <thead><tr class="center aligned">
+                    <th>Categoria</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
+                </tr></thead>
+                <tbody>
+                {% for cat in categorias %}
+                <tr>
+                    <td class="center aligned">{{ cat.titulo }}</td>
+
+                    <td class="center aligned">
+                        <a href="{% url 'edit_categoria' cat.id %}">
+                        <i class="blue edit icon"></i>
+                    </a>
+                    </td>
+                    <td class="center aligned">
+                        <a href="{% url 'delete_categoria' cat.id %}">
+                            <i class="pink trash alternate icon"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+                {% endfor %}
+        </table>
+
+       <a href="{% url 'post_new' %}" class="ui blue right floated button">
+            Novo post
+            <i class="angle double right icon"></i>
+        </a>
+
+        <table class="ui large striped table">
+                <thead><tr class="center aligned">
+                    <th>Título</th>
+                    <th>Categoria</th>
+                    <th>Data</th>
+                    <th>Editar</th>
+                    <th>Deletar</th>
+                </tr></thead>
+                <tbody>
+                {% for post in posts %}
+                <tr>
+                    <td class="center aligned">{{ post.title }}</td>
+                    <td class="center aligned">{{ post.categoria.titulo }}</td>
+                    <td class="center aligned">{{ post.created_at }}</td>
+                    <td class="center aligned">
+                        <a href="{% url 'edit_post' post.id %}">
+                        <i class="blue edit icon"></i>
+                    </a>
+                    </td>
+                    <td class="center aligned">
+                        <a href="{% url 'delete_post' post.id %}">
+                            <i class="pink trash alternate icon"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+                {% endfor %}
+        </table>
+       </div>
+
+</div>
+
+
+{% endblock %}

@@ -8,25 +8,20 @@
     <link rel="stylesheet" href="{% static 'semantic/semantic.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
     <link rel="shortcut icon" href="{% static 'image/hand_icon.png' %}" type="image/x-icon" >
-    <title>{% block title %}S&T{% endblock %}</title>
+    <title>{% block title %}Blog da Ana{% endblock %}</title>
 </head>
 <body>
         <div class="ui inverted violet top fixed menu">
                 <div class="item">
                   <img src="{% static 'image/hand_tiny.png' %}">
                 </div>
-                <a class="item" href="{% url 'main' %}"><font style="vertical-align: inherit;">
+                <a class="item" href="{% url 'principal' %}"><font style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">
-                        Principal 
+                        Página principal
                     </font></font></a>
                     {% if user.is_authenticated %}
-                <a class="item" href="{% url 'user-page' user.id %}"><font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">
-                        Perfil de
-                        {{ user.username }} 
-                    </font></font></a>
                     {% if user.is_superuser %}
-                <a class="item" href="#"><font style="vertical-align: inherit;">
+                <a class="item" href="{% url 'administracao' %}"><font style="vertical-align: inherit;">
                     <font style="vertical-align: inherit;">
                         Administração 
                     </font></font></a>
@@ -34,16 +29,17 @@
                     {% endif %}
                 <div class="right menu">
                     {% if user.is_authenticated %}
+
                     <a class="item" href="{% url 'logout' %}"><font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">
                             Log-out
                         </font></font></a>
                     {% else %}
-                    <a class="item" href="{% url 'new_user' %}"><font style="vertical-align: inherit;">
+                    <a class="item" href="{% url 'cadastro_usuario' %}"><font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">
                             Registre-se para realizar log-in
                         </font></font></a>
-                    <a class="item" href="{% url 'login' %}"><font style="vertical-align: inherit;">
+                    <a class="item" href="{% url 'login_user' %}"><font style="vertical-align: inherit;">
                         <font style="vertical-align: inherit;">
                             Log-in
                         </font></font></a>
@@ -56,8 +52,27 @@
 
         {% endblock %}
     </article>
-    <div class="ui bottom fixed menu">
-            Footer
+    <footer class="ui centered middle aligned stackable grid">
+    <div class="one wide column">
+        <i class="facebook icon"></i>
+        <i class="youtube icon"></i>
+        <i class="whatsapp icon"></i>
+        <i class="twitter icon"></i>
+
     </div>
+    <div class="eight wide column">
+        <p class="ui center aligned basic segment">
+            <span>Desenvolvido por Ana Rafaela Gil dos Reis</span><br>
+            <span>para a disciplina de desenvolvimento web II</span>
+        </p>
+    </div>
+    <div class="one wide column">
+        <a href='http://fabricadesoftware.ifc.edu.br'>
+            <img class="ui image centered tiny" src="{% static 'image/hand_tiny.png' %}"
+                 alt="Logo Fábrica de Software">
+        </a>
+    </div>
+</footer>
+
 </body>
 </html>

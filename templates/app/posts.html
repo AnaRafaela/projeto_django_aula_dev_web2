@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ block.super }}/Principal/posts{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<div class="two wide column"></div>
+<div class="twelve wide column">
+<div class="two wide column"></div>
+<div class="field">
+<div class="ui pink fluid segment">
+    <h2 class="ui center aligned header">Olá
+        {{ user.username }}
+    </h2>
+
+    <div class="field">
+<div class="ui fluid segment" style="background-color: pink">
+
+<h4 class="ui center aligned top attached header">
+    <div class="ui center aligned pagination">
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a href="?page=1"><i class="angle double left icon"></i>primeira</a>
+                <a href="?page={{ posts.previous_page_number }}">
+                    <i class="angle left icon"></i>
+                    anterior
+                </a>
+            {% endif %}
+            <span class="current">
+                Página {{ posts.number }} de {{ posts.paginator.num_pages }}
+            </span>
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">
+                    próximo
+                    <i class="angle right icon"></i>
+                </a>
+                <a href="?page={{ posts.paginator.num_pages }}">
+                    última
+                    <i class="angle double right icon"></i>
+                </a>
+            {% endif %}
+        </span>
+    </div>
+</h4>
+    <div class="ui centered list">
+        {% for post in posts %}
+        <div class="item">
+        <div class="content">
+            <h3 class="ui center aligned header"><u>{{ post.title }}</u></h3>
+                {% if post.image %}
+
+            <img class="ui left floated medium image" src="{{ post.image.url }}">
+
+            {% else %}
+            <img class="ui centered medium image" src="#">
+            {% endif %}
+
+            <p>
+            <p align="justify">
+                {{ post.texto }}
+            </p>
+            </p>
+             <h4 class="ui inverted horizontal divider">---</h4>
+
+        </div>
+        </div>
+
+
+         {% endfor %}
+    </div>
+
+{% endif %}
+{% endblock %}

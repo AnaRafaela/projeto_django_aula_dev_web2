@@ -1,5 +1,7 @@
 from django.contrib import admin
-from app.models import Post
+from .models import Blog, Categoria
 # Register your models here.
 
-admin.site.register(Post)
+
+admin.site.register(Blog)
+admin.site.register(Categoria)

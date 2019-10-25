@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="two wide column"></div>
+    <div class="twelve wide column">
+        <div class="two wide column"></div>
+        <div class="ui pink fluid segment" style="background-color:lightpink">
+            <h2 class="ui center aligned header">Novo post</h2>
+
+        <form class="ui form segment" style="background-color: pink" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="field">
+                <div class="two fields">
+                    <div class="ten wide field">
+                        <label>Título</label>
+                        {{ form.title }}
+
+                    </div>
+                    <div class="field">
+                        <label>Selecione uma categoria</label>
+                        {{ form.categoria }}
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label>Colocar uma imagem</label>
+                {{ form.image }}
+            </div>
+                <div class="field">
+                    <label>Texto</label>
+                    {{ form.texto }}
+                </div>
+
+            <div class="ui grid">
+                <div class="sixteen wide column">
+                    <button type="submit" class="ui fluid violet button">
+                      Submeter
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
+        <a href="{% url 'administracao' %}" class="ui left floated button">
+            Voltar
+            </a>
+
+    </div>
+
+{% endblock %}
+

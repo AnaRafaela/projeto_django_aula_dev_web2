@@ -5,178 +5,29 @@
 
 {% if user.is_authenticated %}
 <div class="two wide column"></div>
-<div class="twelve wide column">
-<div class="two wide column"></div>
-<div class="field">
-<div class="ui pink fluid segment">
-    <h2 class="ui center aligned header">Olá 
-        {{ user.username }}
-    </h2>
-    <div class="ui form">
-            <div class="field">
-                    <form class="ui category search">
-                        <div class="ui icon input">
-                            <input class="prompt" name="busca" id="busca" type="text" placeholder="Digite sua busca...">
-                            <button type="submit" class="circular ui icon button">
-                                <i class="search icon"></i></button>
-                        </div>
-                        <div class="results"></div>
-                    </form>
-                </div>
-            </div>
-            </div>
-        </div>
-    
-    <div class="field">
-<div class="ui fluid segment" style="background-color: pink">
-<h2 class="ui center aligned header">Resultados</h2>
-<h4 class="ui center aligned top attached header">
-    <div class="ui center aligned pagination">
-        <span class="step-links">
-            {% if lista_posts.has_previous %}
-                <a href="?page=1"><i class="angle double left icon"></i>primeira</a>
-                <a href="?page={{ lista_posts.previous_page_number }}">
-                    <i class="angle left icon"></i>
-                    anterior
-                </a>
-            {% endif %}
-            <span class="current">
-                Página {{ lista_posts.number }} de {{ lista_posts.paginator.num_pages }}
-            </span>
-            {% if lista_posts.has_next %}
-                <a href="?page={{ lista_posts.next_page_number }}">
-                    próximo
-                    <i class="angle right icon"></i>
-                </a>
-                <a href="?page={{ lista_posts.paginator.num_pages }}">
-                    última
-                    <i class="angle double right icon"></i>
-                </a>
-            {% endif %}
-        </span>
-    </div>
-</h4>
-    <div class="ui centered list">
-        {% for post in lista_posts %}
-        <div class="item">
-        <div class="content">
-                {% if post.imagem %}
-        <a href="{% url 'imagem' post.id %}">
-            <img class="ui centered medium image" src="{{ post.imagem.url }}">
+<div class="grid row centered">
+<h1 class="centered aligned">Escolha um assunto abaixo para acessar as postagens</h1>
+<div class="ui center aligned medium images">
+    {% for classe in classes %}
+        <a href="{% url 'visualizar_posts' classe.id %}">
+  <img class="ui medium image" src="{{ classe.image.url }}">
+        <div class="ui violet icon button" data-tooltip="{{ classe.titulo }}">
+  <i class="hand point left outline icon"></i>
+</div>
         </a>
-            {% else %}
-            <img class="ui centered medium image" src="{% static 'image/show-and-tell-Logo.jpg' %}">
-            {% endif %}
-            <p>
-            <a href="{'#'}">
-                <h4 class="ui center aligned header">{{ post.title }}</h4>
-            </a>
-            <p>
-                <h5 class="ui center aligned header">
-                {{ post.description }}
-            </h5>
-            </p>
-        </p>
-        </div>
-        </div>
+  {% endfor %}
 
-        <div class="ui comments">
-                <h3 class="ui dividing header"><font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">
-                        Comentários</font>
-                    </font></h3>
-                <div class="comment">
-                  <a class="avatar">
-                    <img src="/images/avatar/small/matt.jpg">
-                  </a>
-                  <div class="content">
-                    <a class="author"><font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Matt</font></font></a>
-                    <div class="metadata">
-                      <span class="date"><font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Hoje às 17h42</font></font></span>
-                    </div>
-                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                      Como artístico!
-                    </font></font></div>
-                    <div class="actions">
-                      <a class="reply"><font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Resposta</font></font></a>
-                    </div>
-                  </div>
-                </div>
-                <div class="comment">
-                  <a class="avatar">
-                    <img src="/images/avatar/small/elliot.jpg">
-                  </a>
-                  <div class="content">
-                    <a class="author"><font style="vertical-align: inherit;">
-                        <font style="vertical-align: inherit;">Elliot Fu</font></font></a>
-                    <div class="metadata">
-                      <span class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ontem às 12:30</font></font></span>
-                    </div>
-                    <div class="text">
-                      <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Isso tem sido muito útil para minha pesquisa. </font><font style="vertical-align: inherit;">Obrigado também!</font></font></p>
-                    </div>
-                    <div class="actions">
-                      <a class="reply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resposta</font></font></a>
-                    </div>
-                  </div>
-                  <div class="comments">
-                    <div class="comment">
-                      <a class="avatar">
-                        <img src="/images/avatar/small/jenny.jpg">
-                      </a>
-                      <div class="content">
-                        <a class="author"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Jenny Hess</font></font></a>
-                        <div class="metadata">
-                          <span class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Agora mesmo</font></font></span>
-                        </div>
-                        <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          Elliot você está sempre tão certo :)
-                        </font></font></div>
-                        <div class="actions">
-                          <a class="reply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resposta</font></font></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="comment">
-                  <a class="avatar">
-                    <img src="/images/avatar/small/joe.jpg">
-                  </a>
-                  <div class="content">
-                    <a class="author"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Joe Henderson</font></font></a>
-                    <div class="metadata">
-                      <span class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5 dias atrás</font></font></span>
-                    </div>
-                    <div class="text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                      Cara, isso é incrível. </font><font style="vertical-align: inherit;">Muito obrigado
-                    </font></font></div>
-                    <div class="actions">
-                      <a class="reply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Resposta</font></font></a>
-                    </div>
-                  </div>
-                </div>
-                <form class="ui reply form">
-                  <div class="field">
-                    <textarea></textarea>
-                  </div>
-                  <div class="ui blue labeled submit icon button">
-                    <i class="icon edit"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Adicionar resposta
-                  </font></font></div>
-                </form>
-              </div>
-
-         {% endfor %}
-    </div>
-
-        </div>
-    </div>
 </div>
 </div>
+
 {% else %}
-<img class="ui centered medium image" src="{% static 'image/color_hand.png' %}">
+    <div class="two wide column"></div>
+    <div class="twelve wide column">
+
+        <div>
+            <img class="ui centered huge image" src="{% static "image/logo_blog.png" %}">
+        </div>
+
+    </div>
 {% endif %}
 {% endblock %}

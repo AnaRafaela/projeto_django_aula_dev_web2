@@ -1,10 +1,15 @@
 {% load staticfiles %}
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'semantic/semantic.css' %}">
-        <link rel="stylesheet" href="{% static 'style.css' %}">
-        <title>LAPVET-Cadastro de laudos</title>
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'semantic/semantic.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" href="{% static 'image/hand_icon.png' %}" type="image/x-icon" >
+    <title>{% block title %}Blog da Dona Ana{% endblock %}</title>
+</head>
+
     <body style="background-color:lightpink; margin-top: 10%">
         <article class="ui middle aligned center aligned grid">
             <div class="row">
@@ -34,7 +39,7 @@
                             <button type='submit' class="ui submit violet button fluid color-button" value='Entrar'>Entrar</button>
                         </form>
                         <div class="ui message">
-                            Novo por aqui? <a href="{% url 'new_user' %}">Inscreva-se</a>
+                            Novo por aqui? <a href="{% url 'cadastro_usuario' %}">Inscreva-se</a>
                         </div>
                     </div>
                     <div class="ui basic segment"></div>
