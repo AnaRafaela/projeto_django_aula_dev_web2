@@ -5,8 +5,11 @@
 
 {% if user.is_authenticated %}
 <div class="two wide column"></div>
+    <div class="grid row centered">
+     <h1 class="ui center aligned header">Escolha um assunto abaixo para acessar as postagens</h1>
+    </div>
 <div class="grid row centered">
-<h1 class="centered aligned">Escolha um assunto abaixo para acessar as postagens</h1>
+<div class="ui segment">
 <div class="ui center aligned medium images">
     {% for classe in classes %}
         <a href="{% url 'visualizar_posts' classe.id %}">
@@ -16,7 +19,7 @@
 </div>
         </a>
   {% endfor %}
-
+</div>
 </div>
 </div>
 
