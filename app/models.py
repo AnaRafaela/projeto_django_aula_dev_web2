@@ -13,7 +13,7 @@ class UsuarioModel(User):
 
 class Categoria(models.Model):
     titulo = models.CharField(max_length=100, db_index=True)
-    image = models.ImageField(upload_to='imagens', blank=True)
+    image = models.ImageField(upload_to='imagens')
 
     def __str__(self):
         return self.titulo
